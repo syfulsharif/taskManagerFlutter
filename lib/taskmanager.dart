@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:assignment8/style.dart';
 
+class Tasks {
+  String title, description;
+  int daysRequired;
+  Tasks(this.title, this.description, this.daysRequired);
+}
+
 class TaskManagerView extends StatefulWidget {
   const TaskManagerView({super.key});
 
@@ -9,6 +15,7 @@ class TaskManagerView extends StatefulWidget {
 }
 
 class _TaskManagerViewState extends State<TaskManagerView> {
+  List<Tasks> tasksToDo = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
