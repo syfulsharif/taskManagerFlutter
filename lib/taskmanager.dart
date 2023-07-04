@@ -80,6 +80,10 @@ class _TaskManagerViewState extends State<TaskManagerView> {
         });
   }
 
+  removeItem(index) {
+    tasksToDo.remove(tasksToDo[index]);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -97,6 +101,46 @@ class _TaskManagerViewState extends State<TaskManagerView> {
           itemCount: tasksToDo.length,
           itemBuilder: (context, index) {
             return ListTile(
+              onLongPress: () {
+                showModalBottomSheet(
+                    context: context,
+                    builder: (context) {
+                      return Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              'Task Details',
+                              style: TextStyle(
+                                fontSize: 20.0,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            const SizedBox(
+                              width: double.infinity,
+                              height: 20.0,
+                            ),
+                            Text('Title: ${tasksToDo[index].title}'),
+                            Text(
+                                'Description: ${tasksToDo[index].description}'),
+                            Text(
+                                'Days Required: ${tasksToDo[index].daysRequired}'),
+                            TextButton(
+                              onPressed: () {
+                                setState(() {
+                                  removeItem(index);
+                                  Navigator.of(context).pop();
+                                });
+                              },
+                              child: const Text('Delete'),
+                            )
+                          ],
+                        ),
+                      );
+                    });
+              },
               title: Text(tasksToDo[index].title),
               subtitle: Text(tasksToDo[index].description),
             );
