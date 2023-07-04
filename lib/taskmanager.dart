@@ -128,13 +128,19 @@ class _TaskManagerViewState extends State<TaskManagerView> {
                             Text(
                                 'Days Required: ${tasksToDo[index].daysRequired}'),
                             TextButton(
+                              style: TextButton.styleFrom(
+                                backgroundColor: Colors.blue,
+                              ),
                               onPressed: () {
                                 setState(() {
                                   removeItem(index);
                                   Navigator.of(context).pop();
                                 });
                               },
-                              child: const Text('Delete'),
+                              child: const Text(
+                                'Delete',
+                                style: TextStyle(color: Colors.white),
+                              ),
                             )
                           ],
                         ),
