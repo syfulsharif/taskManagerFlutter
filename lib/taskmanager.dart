@@ -22,10 +22,20 @@ class _TaskManagerViewState extends State<TaskManagerView> {
     Task('Doing Laundry', 'Washing the clothes', 1)
   ];
 
-  TaskAlertDialog(context) {
-    return showDialog(context: context, builder: (BuildContext context) {
-      return Expanded(child: child)
-    });
+  addTaskAlertDialog(context) {
+    return showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return Expanded(
+              child: AlertDialog(
+            title: const Text('Add Task'),
+            content: Center(
+              child: Column(
+                children: [Text('Title')],
+              ),
+            ),
+          ));
+        });
   }
 
   @override
@@ -36,7 +46,9 @@ class _TaskManagerViewState extends State<TaskManagerView> {
         centerTitle: true,
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          addTaskAlertDialog(context);
+        },
         child: const Icon(Icons.add),
       ),
       body: ListView.builder(
