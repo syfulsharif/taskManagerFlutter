@@ -29,35 +29,35 @@ class _TaskManagerViewState extends State<TaskManagerView> {
           return Expanded(
             child: AlertDialog(
               title: const Text('Add Task'),
+              content: Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    TextField(
+                      decoration: appInputDecoration('Title', 10.0, 20.0),
+                    ),
+                    sizedBox15(),
+                    TextField(
+                      decoration: appInputDecoration('Description', 30.0, 20.0),
+                      maxLines: 5,
+                      minLines: 1,
+                    ),
+                    sizedBox15(),
+                    TextField(
+                      decoration:
+                          appInputDecoration('Days Required', 10.0, 20.0),
+                    ),
+                  ],
+                ),
+              ),
               actions: [
                 TextButton(
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
-                  child: Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        TextField(
-                          decoration: appInputDecoration('Title', 10.0, 20.0),
-                        ),
-                        sizedBox15(),
-                        TextField(
-                          decoration:
-                              appInputDecoration('Description', 30.0, 20.0),
-                          maxLines: 5,
-                          minLines: 1,
-                        ),
-                        sizedBox15(),
-                        TextField(
-                          decoration:
-                              appInputDecoration('Days Required', 10.0, 20.0),
-                        ),
-                      ],
-                    ),
-                  ),
+                  child: const Text('Save'),
                 )
               ],
             ),
