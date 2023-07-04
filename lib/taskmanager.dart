@@ -27,14 +27,18 @@ class _TaskManagerViewState extends State<TaskManagerView> {
         context: context,
         builder: (BuildContext context) {
           return Expanded(
-              child: AlertDialog(
-            title: const Text('Add Task'),
-            content: Center(
-              child: Column(
-                children: [Text('Title')],
-              ),
+            child: AlertDialog(
+              title: Text('Add Task'),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: const Text('Save'),
+                )
+              ],
             ),
-          ));
+          );
         });
   }
 
