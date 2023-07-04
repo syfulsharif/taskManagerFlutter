@@ -23,6 +23,7 @@ class _TaskManagerViewState extends State<TaskManagerView> {
   ];
 
   addTaskAlertDialog(context) {
+    var getFormData = {};
     return showDialog(
         context: context,
         builder: (BuildContext context) {
@@ -36,16 +37,25 @@ class _TaskManagerViewState extends State<TaskManagerView> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     TextField(
+                      onChanged: (value) {
+                        getFormData['title'] = value;
+                      },
                       decoration: appInputDecoration('Title', 10.0, 20.0),
                     ),
                     sizedBox15(),
                     TextField(
+                      onChanged: (value) {
+                        getFormData['description'] = value;
+                      },
                       decoration: appInputDecoration('Description', 30.0, 20.0),
                       maxLines: 5,
                       minLines: 1,
                     ),
                     sizedBox15(),
                     TextField(
+                      onChanged: (value) {
+                        getFormData['daysRequired'] = int.parse(value);
+                      },
                       decoration:
                           appInputDecoration('Days Required', 10.0, 20.0),
                     ),
@@ -55,6 +65,10 @@ class _TaskManagerViewState extends State<TaskManagerView> {
               actions: [
                 TextButton(
                   onPressed: () {
+                    tasksToDo.add(Task(
+                        getFormData['title'],
+                        getFormData['description'],
+                        getFormData['daysRequired']));
                     Navigator.of(context).pop();
                   },
                   child: const Text('Save'),
