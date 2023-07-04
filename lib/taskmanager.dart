@@ -127,6 +127,10 @@ class _TaskManagerViewState extends State<TaskManagerView> {
                                 'Description: ${tasksToDo[index].description}'),
                             Text(
                                 'Days Required: ${tasksToDo[index].daysRequired}'),
+                            const SizedBox(
+                              width: double.infinity,
+                              height: 20.0,
+                            ),
                             TextButton(
                               style: TextButton.styleFrom(
                                 backgroundColor: Colors.blue,
