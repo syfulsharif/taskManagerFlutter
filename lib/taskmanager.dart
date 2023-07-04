@@ -28,13 +28,36 @@ class _TaskManagerViewState extends State<TaskManagerView> {
         builder: (BuildContext context) {
           return Expanded(
             child: AlertDialog(
-              title: Text('Add Task'),
+              title: const Text('Add Task'),
               actions: [
                 TextButton(
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
-                  child: const Text('Save'),
+                  child: Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        TextField(
+                          decoration: appInputDecoration('Title', 10.0, 20.0),
+                        ),
+                        sizedBox15(),
+                        TextField(
+                          decoration:
+                              appInputDecoration('Description', 30.0, 20.0),
+                          maxLines: 5,
+                          minLines: 1,
+                        ),
+                        sizedBox15(),
+                        TextField(
+                          decoration:
+                              appInputDecoration('Days Required', 10.0, 20.0),
+                        ),
+                      ],
+                    ),
+                  ),
                 )
               ],
             ),
