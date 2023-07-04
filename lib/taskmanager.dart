@@ -65,6 +65,7 @@ class _TaskManagerViewState extends State<TaskManagerView> {
               actions: [
                 TextButton(
                   onPressed: () {
+                    setState(() {});
                     tasksToDo.add(Task(
                         getFormData['title'],
                         getFormData['description'],
